@@ -1,12 +1,27 @@
+<!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+   <link rel="icon" type="image/icon" href="/resources/favicon.ico">
     <link href='/resources/css/lib/bootstrap.min.css' rel='stylesheet' />
     <script src='/resources/js/lib/popper.min.js'></script>
     <script src='/resources/js/lib/bootstrap.min.js'></script>
     <script src='/resources/js/lib/axios.min.js'></script>
+        <script type='text/javascript' src='/resources/js/custom.js'></script>
+
+<style>
+  .form-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + .75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+ 
+}
+</style>
     <title>{{title}}</title>
   </head>
   <body>
@@ -28,7 +43,7 @@
                   placeholder='Name of Page'
                   required
                 />
-                <div class='invalid-feedback'>
+                <div id="invalid-feedback" class='invalid-feedback'>
                   Please provide a valid name.
                 </div>
               </div>
@@ -67,7 +82,7 @@
                   <td>{{this.name}}</td>
                   <td>{{this.slug}}</td>
                   <td>
-                    <a href='/api/editor/{{this._id}}'>Edit</a>
+                    <a href='/api/builder/{{this._id}}'>Edit</a>
                   </td>
                 </tr>
               {{/each}}
@@ -76,6 +91,5 @@
         </div>
       </div>
     </div>
-    <script type='text/javascript' src='/resources/js/custom.js'></script>
   </body>
 </html>

@@ -24,20 +24,36 @@ app.use('/resources', express.static(path.join(__dirname, 'public')));
 app.set('views', `views`);
 app.set('view engine', 'hbs');
 
-const mongoUri = 'mongodb://localhost:27017/webpage_builder';
-mongoose.connect(
-  mongoUri,
-  {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) throw err;
-    console.log('Connected to MongoDB');
-  },
-);
+const mongoUri = 'mongodb+srv://salahtader:salas1984@cluster0.hdvyuvz.mongodb.net/builder';
+mongoose
+  .connect(
+    mongoUri,
+    {
+      // useCreateIndex: true,
+      // useFindAndModify: false,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    // (err) => {
+    //   if (err) throw err;
+    //   console.log('Connected to MongoDB');
+    // },
+  )
+  .then(() => {
+    console.log('connected');
+  })
+  .catch((err) => {
+    console.log('noconnected', err);
+  });
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully');
+});
+app.get('/', (req, res) => {
+  console.log('root page');
+  res.status(200).redirect('/api/');
+});
 app.use('/api/projects', projectRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/assets', assetRoute);

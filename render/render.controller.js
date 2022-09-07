@@ -1,12 +1,18 @@
 import { findPageById } from '../page/page.services';
-
+import validator from 'validator';
 const renderHtml = async (req, res, next) => {
   try {
     const { params } = req;
     const { pageId } = params;
+    if (!validator.isMongoId(pageId)) {
+      console.log(' renderHtml id non valid');
+      console.log('pageId', pageId);
+      return;
+    }
     const page = await findPageById(pageId);
+    console.log('render controller findPageById ' + page);
     if (!page) {
-      res.render('404');
+      return res.render('404');
     }
     const { content, name } = page;
     let html = content['mycustom-html'];
@@ -15,7 +21,8 @@ const renderHtml = async (req, res, next) => {
 
     res.render('render', { html, css, name });
   } catch (error) {
-    res.render('404');
+    // res.render('404');
+    console.log(error);
   }
 };
 

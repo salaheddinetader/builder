@@ -10,6 +10,7 @@ import {
 } from './page.controller';
 
 const pageRoute = express.Router();
+
 pageRoute.post('/', create);
 pageRoute.post('/:pageId/content', changeContent);
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const Page = new mongoose.Schema(
+const Page = new Schema(
   {
     name: {
       type: String,
@@ -18,6 +18,7 @@ const Page = new mongoose.Schema(
   {
     timestamps: true,
   },
+  
 );
 
 export default mongoose.model('Pages', Page);

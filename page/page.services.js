@@ -1,4 +1,4 @@
-import Pages from './page.modal';
+import Pages from './page.model';
 
 export const createPage = async (pageBody) => {
   const slug = pageBody.name.toLowerCase().split(' ').join('-');
@@ -18,6 +18,7 @@ export const pageDetails = async (pageId) => {
   return pages;
 };
 export const savePageContent = async (pageId, content) => {
+  console.log('content savePageContent ', content);
   const pageUpdated = await Pages.findOneAndUpdate({ _id: pageId }, { content });
   return pageUpdated;
 };
