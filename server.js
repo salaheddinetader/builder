@@ -24,7 +24,9 @@ app.use('/resources', express.static(path.join(__dirname, 'public')));
 app.set('views', `views`);
 app.set('view engine', 'hbs');
 
-const mongoUri = 'mongodb+srv://salahtader:salas1984@cluster0.hdvyuvz.mongodb.net/builder';
+const mongoUri =
+  'mongodb+srv://builder:builder1984builder@builder.et5kojr.mongodb.net/?retryWrites=true&w=majority';
+
 mongoose
   .connect(
     mongoUri,
