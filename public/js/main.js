@@ -4,7 +4,7 @@ const editor = grapesjs.init({
   blockManager: {
     appendTo: '#blocks',
   },
-  StorageManager: {
+  storageManager: {
     type: 'remote',
     stepsBeforeSave: 1,
     autosave: true, // Store data automatically
@@ -15,8 +15,8 @@ const editor = grapesjs.init({
     storeStyles: true,
     storeHtml: true,
     storeCss: true,
-    urlStore: `/pages/${location.pathname.split('/')[2]}/content`,
-    urlLoad: `/pages/${location.pathname.split('/')[2]}/content`,
+    urlStore: `/api/pages/${location.pathname.split('/')[2]}/content`,
+    urlLoad: `/api/pages/${location.pathname.split('/')[2]}/content`,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -111,9 +111,6 @@ editor.Commands.add('set-device-desktop', {
 });
 editor.Commands.add('set-device-mobile', {
   run: (editor) => editor.setDevice('Mobile'),
-});
-editor.StorageManager.get('remote').set({
-  urlLoad: `api/pages/${location.pathname.split('/')[2]}/content`,
 });
 editor.on('storage:load', function (e) {
   console.log('Loaded ', e);

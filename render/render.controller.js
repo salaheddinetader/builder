@@ -10,7 +10,7 @@ const renderHtml = async (req, res, next) => {
       return;
     }
     const page = await findPageById(pageId);
-    console.log('render controller findPageById ' + page);
+    console.log('render controller findPageById ' , page.content);
     if (!page) {
       return res.render('404');
     }

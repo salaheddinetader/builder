@@ -7,6 +7,8 @@ import {
   updatePage,
 } from './page.services';
 import validator from 'validator';
+
+
 export const create = async (req, res) => {
   const pageBody = req.body;
   console.log(pageBody);
@@ -66,6 +68,6 @@ export const loadContent = async (req, res) => {
 
   res.header('Content-Type', 'application/json');
   const pageData = await pageDetails(pageId);
-  console.log(pageData.content);
+  console.log('pagecontroller loadContent  --->'+pageData.content);
   res.json(pageData.content);
 };

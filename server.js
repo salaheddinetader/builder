@@ -31,15 +31,10 @@ mongoose
   .connect(
     mongoUri,
     {
-      // useCreateIndex: true,
-      // useFindAndModify: false,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },
-    // (err) => {
-    //   if (err) throw err;
-    //   console.log('Connected to MongoDB');
-    // },
+
   )
   .then(() => {
     console.log('connected');
@@ -54,12 +49,12 @@ connection.once('open', () => {
 });
 app.get('/', (req, res) => {
   console.log('root page');
-  res.status(200).redirect('/api/');
+  res.status(301).redirect('/api/');
 });
 app.use('/api/projects', projectRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/assets', assetRoute);
-app.use('/api/', uiRoute);
+app.use('/api/', uiRoute );
 app.get('/:pageId?', renderHtml);
 
 const PORT = process.env.APP_PORT || 8080;

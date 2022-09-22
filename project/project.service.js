@@ -6,7 +6,7 @@ export const createProject = async (body) => {
   if (projects && projects.length > 0) {
     throw new Error(`Project with name: ${body.name} already exists`);
   }
-  console.log('jdjdjdjdjdjdjdjdjdjjd');
+  console.log('create project service');
   const project = new Projects(body);
   console.log('project :>> ', project);
   return await project.save();
@@ -14,6 +14,7 @@ export const createProject = async (body) => {
 
 export const findProjectByUuid = async (projectId) => {};
 export const findProject = async (query) => {
+  console.log('Find project service');
   const projects = await Projects.find(query);
   return projects;
 };
